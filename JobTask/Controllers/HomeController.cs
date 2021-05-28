@@ -17,10 +17,16 @@ namespace JobTask.Controllers
             pensionService = _pensionService;
         }
 
-        [HttpGet]
+        [HttpGet("/")]
         public IActionResult Index()
         {
             return View("GetTin");
+        }
+
+        [HttpGet]
+        public IActionResult GetTin()
+        {
+            return View();
         }
 
         [HttpGet("get-tin")]
