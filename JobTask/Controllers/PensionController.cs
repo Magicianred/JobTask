@@ -28,12 +28,12 @@ namespace JobTask.Controllers
             return Ok(pensionResult == null ? new PensionModel() : pensionResult);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Post([FromBody]PensionModel model)
+        [HttpGet("get-tin")]
+        public async Task<IActionResult> GetTin()
         {
-            //todo something
-            var result = await pensionService.PostDataAsync(model);
-            return Ok(result);
+            var tinResult = await pensionService.GetPensionTinAsync();
+
+            return Ok(tinResult == null ? new PensionModel() : tinResult);
         }
     }
 }

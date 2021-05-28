@@ -27,6 +27,22 @@ namespace JobTask.ServiceLayer.Pension.Concrete
             return model;
         }
 
+        public async Task<PensionTinModel> GetPensionTinAsync()
+        {
+            PensionTinModel model = null;
+            await Task.Run(() =>
+            {
+                var client = new WebClient();
+                client.Credentials = new NetworkCredential(Constants.Login, Constants.Password);
+
+                var response = client.DownloadString(Constants.IntegAPI_TIN);
+
+                model = JsonSerializer.Deserialize(response, typeof(PensionTinModel)) as PensionTinModel;
+            });
+
+            return model;
+        }
+
         public async Task<ErrorResultModel> PostDataAsync(PensionModel model)
         {
             await Task.Run(() =>

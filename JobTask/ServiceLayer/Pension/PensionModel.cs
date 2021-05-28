@@ -4,8 +4,17 @@ using System.Linq;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace JobTask.ServiceLayer
+namespace JobTask.ServiceLayer.Pension
 {
+    public class PensionModel : ErrorResultModel
+    {
+        /// <summary>
+        /// todo: all of data
+        /// </summary>
+        [JsonPropertyName("data")]
+        public IEnumerable<PensionItemModel> Data { get; set; }
+    }
+
     public class PensionItemModel
     {
         [JsonPropertyName("pinfl")]
@@ -13,7 +22,7 @@ namespace JobTask.ServiceLayer
 
         [JsonPropertyName("activity_type")]
         public int ActivityType { get; set; }
-        
+
         [JsonPropertyName("rate_summa")]
         public decimal RateSumma { get; set; }
 
