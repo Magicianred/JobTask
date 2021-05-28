@@ -1,3 +1,5 @@
+using JobTask.ServiceLayer.Pension;
+using JobTask.ServiceLayer.Pension.Concrete;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +34,8 @@ namespace JobTask
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "JobTask", Version = "v1" });
             });
+
+            services.AddTransient<IPensionService, PensionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
