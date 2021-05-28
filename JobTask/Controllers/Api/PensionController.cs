@@ -29,9 +29,9 @@ namespace JobTask.Controllers
         }
 
         [HttpGet("get-tin")]
-        public async Task<IActionResult> GetTin()
+        public async Task<IActionResult> GetTin(string pinfl)
         {
-            var tinResult = await pensionService.GetPensionTinAsync();
+            var tinResult = await pensionService.GetPensionTinAsync(pinfl);
 
             return Ok(tinResult == null ? new PensionModel() : tinResult);
         }
