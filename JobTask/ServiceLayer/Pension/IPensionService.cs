@@ -11,7 +11,7 @@ namespace JobTask.ServiceLayer.Pension
         /// some methods
         /// </summary>
         /// <returns></returns>
-        Task<PensionModel> GetPensionDataAsync();
+        Task<PensionModel> GetPensionDataAsync(string pinfl);
         Task<ErrorResultModel> PostDataAsync(PensionModel model);
         Task<PensionTinModel> GetPensionTinAsync(string pinfl);
     }

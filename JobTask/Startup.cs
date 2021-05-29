@@ -48,7 +48,7 @@ namespace JobTask
         {
             if (env.IsProduction())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JobTask v1"));
             }

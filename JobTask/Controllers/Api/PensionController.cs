@@ -20,10 +20,10 @@ namespace JobTask.Controllers
             pensionService = _pensionService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("get-data")]
+        public async Task<IActionResult> Get(string pinfl)
         {
-            var pensionResult = await pensionService.GetPensionDataAsync();
+            var pensionResult = await pensionService.GetPensionDataAsync(pinfl);
 
             return Ok(pensionResult == null ? new PensionModel() : pensionResult);
         }

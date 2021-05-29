@@ -11,17 +11,21 @@ namespace JobTask.ServiceLayer.Pension.Concrete
 {
     public class PensionService : IPensionService
     {
-        public async Task<PensionModel> GetPensionDataAsync()
+        public async Task<PensionModel> GetPensionDataAsync(string pinfl)
         {
             PensionModel model = null;
             await Task.Run(() =>
             {
-                var client = new WebClient();
-                client.Credentials = new NetworkCredential(Constants.Login, Constants.Password);
+                try
+                {
+                    var client = new WebClient();
+                    client.Credentials = new NetworkCredential(Constants.Login, Constants.Password);
 
-                var response = client.DownloadString(Constants.IntegAPI);
+                    var response = client.DownloadString(Constants.IntegAPI + pinfl);
 
-                model = JsonSerializer.Deserialize(response, typeof(PensionModel)) as PensionModel;
+                    model = JsonSerializer.Deserialize(response, typeof(PensionModel)) as PensionModel;
+                }
+                catch { }
             });
 
             return model;
@@ -37,7 +41,7 @@ namespace JobTask.ServiceLayer.Pension.Concrete
                     var client = new WebClient();
                     client.Credentials = new NetworkCredential(Constants.Login, Constants.Password);
 
-                    var response = client.DownloadString(Constants.IntegAPI_TIN + pinfl.ToString());
+                    var response = client.DownloadString(Constants.IntegAPI_TIN + pinfl);
 
                     model = JsonSerializer.Deserialize(response, typeof(PensionTinModel)) as PensionTinModel;
                 }
